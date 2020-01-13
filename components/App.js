@@ -2,12 +2,12 @@ import React from 'react';
 import {createAppContainer} from 'react-navigation';
 import {createStackNavigator} from 'react-navigation-stack';
 import Events from './Events';
-import Persons from './Persons';
+import Navigator from './Navigator';
 
 const MainNavigator = createStackNavigator(
   {
     Events: {screen: Events},
-    Persons: {screen: Persons},
+    Navigator: {screen: Navigator},
   },
   {
     headerMode: 'none',
