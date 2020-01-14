@@ -79,6 +79,15 @@ const Items = ({navigation, eventId}) => {
             description={
               (Math.round(Number(item.price) * 100) / 100).toFixed(2) + ' Fr.'
             }
+            onPress={() => {
+              navigation.navigate('Selector', {
+                lastPageIndex: 0,
+                eventId,
+                primaryEntityType: 'item',
+                primaryEntity: item,
+              });
+            }}
+            right={props => <List.Icon {...props} icon={'chevron-right'} />}
           />
         )}
       />

@@ -50,20 +50,33 @@ const Persons = ({navigation, eventId}) => {
   }
 
   if (loading) {
-    return <ActivityIndicator animating={true} style={styles.loading} />;
+    return <ActivityIndicator animating={true} style={styles.loading}/>;
   }
 
   return (
     <>
       <Appbar.Header>
-        <Appbar.BackAction onPress={() => navigation.navigate('Events')} />
-        <Appbar.Content title={'Personen'} />
+        <Appbar.BackAction onPress={() => navigation.navigate('Events')}/>
+        <Appbar.Content title={'Personen'}/>
       </Appbar.Header>
       <FlatList
         style={{flex: 1}}
         data={persons}
         keyExtractor={item => item.id}
-        renderItem={({item}) => <List.Item title={item.name} />}
+        renderItem={({item}) => (
+          <List.Item
+            title={item.name}
+            onPress={() => {
+              navigation.navigate('Selector', {
+                lastPageIndex: 0,
+                eventId,
+                primaryEntityType: 'person',
+                primaryEntity: item,
+              });
+            }}
+            right={props => <List.Icon {...props} icon={'chevron-right'} />}
+          />
+        )}
       />
       <FAB
         style={styles.fab}

@@ -7,7 +7,7 @@ const DistributeRoute = () => <Text>Distribute</Text>;
 
 export default class Navigator extends React.Component {
   state = {
-    index: 0,
+    index: this.props.lastPageIndex || 0,
     routes: [
       {key: 'persons', title: 'Personen', icon: 'human-male'},
       {key: 'items', title: 'Items', icon: 'format-list-bulleted'},
