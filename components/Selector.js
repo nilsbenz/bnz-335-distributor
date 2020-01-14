@@ -155,6 +155,7 @@ const Selector = ({navigation}) => {
                           item.id,
                         )
                       }
+                      disabled={personItem.amount < 1}
                     />
                     <Text>{personItem.amount}</Text>
                     <IconButton
@@ -191,6 +192,7 @@ const Selector = ({navigation}) => {
                           navigation.getParam('primaryEntity').id,
                         )
                       }
+                      disabled={personItem.amount < 1}
                     />
                     <Text>{personItem.amount}</Text>
                     <IconButton

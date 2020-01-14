@@ -50,14 +50,14 @@ const Persons = ({navigation, eventId}) => {
   }
 
   if (loading) {
-    return <ActivityIndicator animating={true} style={styles.loading}/>;
+    return <ActivityIndicator animating={true} style={styles.loading} />;
   }
 
   return (
     <>
       <Appbar.Header>
-        <Appbar.BackAction onPress={() => navigation.navigate('Events')}/>
-        <Appbar.Content title={'Personen'}/>
+        <Appbar.BackAction onPress={() => navigation.navigate('Events')} />
+        <Appbar.Content title={'Personen'} />
       </Appbar.Header>
       <FlatList
         style={{flex: 1}}
@@ -88,11 +88,7 @@ const Persons = ({navigation, eventId}) => {
         onDismiss={() => setIsDialogVisible(false)}>
         <Dialog.Title>Neue Person</Dialog.Title>
         <Dialog.Content>
-          <TextInput
-            label={'Name der Person'}
-            value={person}
-            onChangeText={setPerson}
-          />
+          <TextInput label={'Name'} value={person} onChangeText={setPerson} />
         </Dialog.Content>
         <Dialog.Actions>
           <Button onPress={() => setIsDialogVisible(false)}>Abbrechen</Button>
