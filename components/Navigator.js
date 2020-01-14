@@ -21,7 +21,12 @@ export default class Navigator extends React.Component {
   _renderScene = ({route, jumpTo}) => {
     switch (route.key) {
       case 'persons':
-        return <Persons navigation={this.props.navigation} />;
+        return (
+          <Persons
+            navigation={this.props.navigation}
+            eventId={this.props.navigation.getParam('eventId')}
+          />
+        );
       case 'items':
         return <ItemsRoute />;
       case 'distribute':

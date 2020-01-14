@@ -64,7 +64,7 @@ const Events = ({navigation}) => {
           <List.Item
             title={item.description}
             onPress={() => {
-              navigation.navigate('Navigator');
+              navigation.navigate('Navigator', {eventId: item.id});
             }}
             right={props => <List.Icon {...props} icon={'chevron-right'} />}
           />

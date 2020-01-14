@@ -11,7 +11,7 @@ import {
 import firestore from '@react-native-firebase/firestore';
 import {FlatList, StyleSheet} from 'react-native';
 
-const Persons = ({navigation}) => {
+const Persons = ({navigation, eventId}) => {
   const ref = firestore().collection('persons');
 
   const [person, setPerson] = useState('');
@@ -23,11 +23,13 @@ const Persons = ({navigation}) => {
     return ref.onSnapshot(querySnapshot => {
       const list = [];
       querySnapshot.forEach(doc => {
-        const {name} = doc.data();
-        list.push({
-          id: doc.id,
-          name,
-        });
+        const {name, eventId: event} = doc.data();
+        if (event === eventId) {
+          list.push({
+            id: doc.id,
+            name,
+          });
+        }
       });
 
       setPersons(list);
@@ -41,6 +43,7 @@ const Persons = ({navigation}) => {
   async function addPerson() {
     await ref.add({
       name: person,
+      eventId,
     });
     setPerson('');
     setIsDialogVisible(false);
