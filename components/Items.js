@@ -60,7 +60,15 @@ const Items = ({navigation, eventId}) => {
   }
 
   if (loading) {
-    return <ActivityIndicator animating={true} style={styles.loading} />;
+    return (
+      <>
+        <Appbar.Header>
+          <Appbar.BackAction onPress={() => navigation.navigate('Events')} />
+          <Appbar.Content title={'Items'} />
+        </Appbar.Header>
+        <ActivityIndicator animating={true} style={styles.loading} />
+      </>
+    );
   }
 
   return (

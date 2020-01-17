@@ -90,7 +90,27 @@ const Selector = ({navigation}) => {
   });
 
   if (loadingPersonsItems || loadingSecondary) {
-    return <ActivityIndicator animating={true} style={styles.loading} />;
+    return (
+      <>
+        <Appbar.Header>
+          <Appbar.BackAction
+            onPress={() =>
+              navigation.navigate('Navigator', {
+                navigation: navigation.getParam('lastPageIndex'),
+              })
+            }
+          />
+          <Appbar.Content
+            title={
+              navigation.getParam('primaryEntityType') === 'person'
+                ? navigation.getParam('primaryEntity').name
+                : navigation.getParam('primaryEntity').description
+            }
+          />
+        </Appbar.Header>
+        <ActivityIndicator animating={true} style={styles.loading} />
+      </>
+    );
   }
 
   async function setAmount(personItemId, amount, personId, itemId) {

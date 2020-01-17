@@ -2,8 +2,7 @@ import * as React from 'react';
 import {BottomNavigation, Text} from 'react-native-paper';
 import Persons from './Persons';
 import Items from './Items';
-
-const DistributeRoute = () => <Text>Distribute</Text>;
+import Distribute from './Distribute';
 
 export default class Navigator extends React.Component {
   state = {
@@ -34,7 +33,12 @@ export default class Navigator extends React.Component {
           />
         );
       case 'distribute':
-        return <DistributeRoute />;
+        return (
+          <Distribute
+            navigation={this.props.navigation}
+            eventId={this.props.navigation.getParam('eventId')}
+          />
+        );
     }
   };
 
